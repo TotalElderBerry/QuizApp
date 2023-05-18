@@ -41,6 +41,7 @@ dependencies:
   flutter_sequence_animation: ^4.0.0
   lottie: ^2.3.2
   flutter_neumorphic: ^3.2.0
+  http: ^0.13.6
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quiz_app/controllers/question.controller.dart';
 
 import '../models/question.model.dart';
 import 'congratulation.dart';
@@ -11,19 +12,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _QuizHomePageState extends State<HomePage> {
-  final List<Question> questions = [
-    Question(
-      id: 1,
-      question: 'What is the capital of France?',
-      choices: ['Paris', 'Madrid', 'Berlin', 'London'],
-    ),
-    Question(
-      id: 2,
-      question: 'Who painted the Mona Lisa?',
-      choices: ['Leonardo da Vinci', 'Vincent van Gogh', 'Pablo Picasso', 'Michelangelo'],
-    ),
-    // Add more questions here
-  ];
+  final List<Question> questions = Get.find<QuestionController>().questions;
 
   int currentIndex = 0;
   PageController _pageController = PageController();
