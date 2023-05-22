@@ -15,7 +15,7 @@ class Question {
     q.qUESTION = json['QUESTION'];
     List<String>? temp = q.oPTION!.split("\r\n");
     for(int i = 0; i < temp.length; i++){
-      choices.add(temp[i]);
+      q.choices.add(temp[i]);
     }
     return q;
   }

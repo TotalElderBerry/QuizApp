@@ -63,11 +63,7 @@ class _QuizHomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('Quiz App'),
       ),
-      body: FutureBuilder(
-        future: Get.find<QuestionController>().populateQuestions(),
-        builder: (context, snapshot) {
-          if(snapshot.hasData){
-            return Container(
+      body: Container(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -113,13 +109,14 @@ class _QuizHomePageState extends State<HomePage> {
                                 itemBuilder: (context, choiceIndex) {
                                   print(questions[index].choices.length);
                                   final choice = questions[index].choices[choiceIndex];
+                                  print(choice);
                                   final isSelected = selectedChoices[index] == choiceIndex;
                                   return GestureDetector(
                                     onTap: () => selectChoice(choiceIndex),
                                     child: AnimatedContainer(
-                                      duration: Duration(milliseconds: 200),
-                                      margin: EdgeInsets.only(bottom: 8.0),
-                                      padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+                                      duration: const Duration(milliseconds: 200),
+                                      margin: const EdgeInsets.only(bottom: 8.0),
+                                      padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
                                       decoration: BoxDecoration(
                                         color: isSelected ? theme.primaryColor : Colors.transparent,
                                         borderRadius: BorderRadius.circular(8.0),
@@ -175,15 +172,7 @@ class _QuizHomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-            );
-
-          }else{
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        }
-      ),
+            ),
     );
   }
 }

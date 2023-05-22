@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:quiz_app/pages/home.dart';
 
+import 'landing.dart';
+
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -93,7 +95,7 @@ class LoginPage extends StatelessWidget {
                       elevation: 7.0,
                       child: GestureDetector(
                         onTap: () {
-                          Get.to(HomePage());
+                          Get.to(LandingPage());
                         },
                         child: Center(
                           child: Text(
