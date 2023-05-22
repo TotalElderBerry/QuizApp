@@ -3,7 +3,7 @@ import 'package:quiz_app/constants/api.dart';
 
 class UserAPI{
 
-  Future<void> login(String username, String password) async {
+  Future<void> login(String idNumber) async {
     //gets the endpoint of all questions
     String endpoint = "${APIConstants.baseUrl}login";
 
@@ -12,8 +12,7 @@ class UserAPI{
         'Content-Type': 'application/json; charset=UTF-8',
       },
     body: <String,String>{
-        "username": username,
-        "password": password
+        "idNumber": idNumber,
       }
     );
 

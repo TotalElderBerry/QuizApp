@@ -55,7 +55,7 @@ class LoginPage extends StatelessWidget {
                 children: <Widget>[
                   TextField(
                     decoration: InputDecoration(
-                      labelText: 'EMAIL',
+                      labelText: 'ID NUMBER',
                       labelStyle: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.grey,
@@ -66,19 +66,7 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 20.0),
-                  TextField(
-                    decoration: InputDecoration(
-                      labelText: 'PASSWORD',
-                      labelStyle: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey,
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.green),
-                      ),
-                    ),
-                    obscureText: true,
-                  ),
+                  
                   SizedBox(height: 5.0),
                   Container(
                     alignment: Alignment(1.0, 0.0),
@@ -94,7 +82,8 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 40.0),
+                  SizedBox(height: 80.0),
+                  
                   Container(
                     height: 40.0,
                     child: Material(

@@ -1,3 +1,3 @@
 class APIConstants{
-  static String baseUrl = "http://10.0.2.2/";
+  static String baseUrl = "http://172.19.130.139:5000/";
 }

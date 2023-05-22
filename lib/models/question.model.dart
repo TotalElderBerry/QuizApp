@@ -1,16 +1,31 @@
-class Question{
-  int? id;
-  String? question;
-  List<String>? choices;
+class Question {
+  int? iD;
+  String? oPTION;
+  int? qID;
+  String? qUESTION;
+  List<String> choices = [];
 
-  Question({required this.id,required this.question, required this.choices});
+  Question({this.iD, this.oPTION, this.qID, this.qUESTION});
 
-  Question.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    question = json['question'];
-    for(int i = 0; i < json['choices'].length; i++){
-      choices!.add(json['choices'][i]);
+  Question fromJson(Map<String, dynamic> json) {
+    Question q = Question();
+    q.iD = json['ID'];
+    q.oPTION = json['OPTION'];
+    q.qID = json['QID'];
+    q.qUESTION = json['QUESTION'];
+    List<String>? temp = q.oPTION!.split("\r\n");
+    for(int i = 0; i < temp.length; i++){
+      choices.add(temp[i]);
     }
-    // choices = json['answers'].cast<String>();
+    return q;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['ID'] = this.iD;
+    data['OPTION'] = this.oPTION;
+    data['QID'] = this.qID;
+    data['QUESTION'] = this.qUESTION;
+    return data;
   }
 }
