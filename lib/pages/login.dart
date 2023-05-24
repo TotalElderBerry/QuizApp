@@ -3,9 +3,11 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:quiz_app/pages/home.dart';
 
+import '../controllers/user.controller.dart';
 import 'landing.dart';
 
 class LoginPage extends StatelessWidget {
+  TextEditingController idNumber = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +41,7 @@ class LoginPage extends StatelessWidget {
                   ),
                   Container(
                     padding: EdgeInsets.fromLTRB(220.0, 175.0, 0.0, 0.0),
-                    child: Text(
+                    child: const Text(
                       '.',
                       style: TextStyle(
                         fontSize: 80.0,
@@ -56,7 +58,8 @@ class LoginPage extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   TextField(
-                    decoration: InputDecoration(
+                    controller: idNumber,
+                    decoration: const InputDecoration(
                       labelText: 'ID NUMBER',
                       labelStyle: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -73,7 +76,7 @@ class LoginPage extends StatelessWidget {
                   Container(
                     alignment: Alignment(1.0, 0.0),
                     padding: EdgeInsets.only(top: 15.0, left: 20.0),
-                    child: InkWell(
+                    child: const InkWell(
                       child: Text(
                         'Forgot Password',
                         style: TextStyle(
@@ -94,10 +97,15 @@ class LoginPage extends StatelessWidget {
                       color: Colors.green,
                       elevation: 7.0,
                       child: GestureDetector(
-                        onTap: () {
+                        onTap: () async {
+                          print("Login CLICKED");
+                          final isSuccess = await Get.find<UserController>().loginStudent(idNumber.text);
+                          if(isSuccess){
+                            print(Get.find<UserController>().currentUser.value!.toJson().toString());
                           Get.to(LandingPage());
+                          }
                         },
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             'LOGIN',
                             style: TextStyle(

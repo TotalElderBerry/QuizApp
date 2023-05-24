@@ -4,6 +4,8 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:quiz_app/controllers/question.controller.dart';
 import 'package:quiz_app/pages/login.dart';
 
+import 'controllers/user.controller.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -12,6 +14,7 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
   // This widget is the root of your application.
   QuestionController controller = Get.put(QuestionController()); 
+  UserController userController = Get.put(UserController());
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
