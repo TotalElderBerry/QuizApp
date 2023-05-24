@@ -11,7 +11,7 @@ class Question {
     Question q = Question();
     q.iD = json['ID'];
     q.oPTION = json['OPTION'];
-    q.qID = json['QID'];
+    q.qID = json['QUESTIONID'];
     q.qUESTION = json['QUESTION'];
     List<String>? temp = q.oPTION!.split("\r\n");
     for(int i = 0; i < temp.length; i++){
@@ -24,7 +24,7 @@ class Question {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['ID'] = this.iD;
     data['OPTION'] = this.oPTION;
-    data['QID'] = this.qID;
+    data['QUESTIONID'] = this.qID;
     data['QUESTION'] = this.qUESTION;
     return data;
   }

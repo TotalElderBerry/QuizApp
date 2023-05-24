@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:quiz_app/controllers/user.controller.dart';
 import 'package:quiz_app/models/question.model.dart';
 
+import '../models/user.model.dart';
 import '../sources/question.api.dart';
 
 class QuestionController extends GetxController{
@@ -24,5 +26,22 @@ class QuestionController extends GetxController{
     isPopulated.value = true;
     return true;
   }
+
+  void submitAnswer(int questionno, String answer){
+    String? currentUser = Get.find<UserController>().currentUser.value!.idno;
+    print("in question $questionno with answer $answer");
+    if(currentUser != null){
+      final response = QuestionAPI().submitAnswer(currentUser,questionno,answer);
+    }
+  }
+
+
+  Future<String> checkAnswers() async {
+    String? currentUser = Get.find<UserController>().currentUser.value!.idno;
+
+    final score = await QuestionAPI().checkAnswers(currentUser!);
+    return score;
+  }
+
 
 }

@@ -32,6 +32,11 @@ class _QuizHomePageState extends State<HomePage> {
         _pageController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
       });
     }
+    String chosenLetter = questions[currentIndex - 1].choices[selectedChoices[currentIndex - 1]].split('.')[0];
+    // print(chosenLetter);
+    Get.find<QuestionController>().submitAnswer(questions[currentIndex-1].qID!, chosenLetter);
+    // print(selectedChoices[currentIndex-1]);
+    // print(currentIndex);
   }
 
   void previousPage() {
@@ -105,11 +110,9 @@ class _QuizHomePageState extends State<HomePage> {
                               SizedBox(height: 16.0),
                               ListView.builder(
                                 shrinkWrap: true,
-                                itemCount: questions[index].choices.length,
+                                itemCount: 4,
                                 itemBuilder: (context, choiceIndex) {
-                                  print(questions[index].choices.length);
                                   final choice = questions[index].choices[choiceIndex];
-                                  print(choice);
                                   final isSelected = selectedChoices[index] == choiceIndex;
                                   return GestureDetector(
                                     onTap: () => selectChoice(choiceIndex),
@@ -161,9 +164,10 @@ class _QuizHomePageState extends State<HomePage> {
                           ),
                         if (currentIndex == questions.length - 1)
                           ElevatedButton(
-                            onPressed: () {
+                            onPressed: () async {
                               // Handle quiz submission
-                              Get.to(CongratulatoryPage());
+                              String result = await Get.find<QuestionController>().checkAnswers();
+                              Get.to(CongratulatoryPage(result: result));
                             },
                             child: Text('Submit'),
                           ),

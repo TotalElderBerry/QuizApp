@@ -98,10 +98,8 @@ class LoginPage extends StatelessWidget {
                       elevation: 7.0,
                       child: GestureDetector(
                         onTap: () async {
-                          print("Login CLICKED");
                           final isSuccess = await Get.find<UserController>().loginStudent(idNumber.text);
                           if(isSuccess){
-                            print(Get.find<UserController>().currentUser.value!.toJson().toString());
                           Get.to(LandingPage());
                           }
                         },

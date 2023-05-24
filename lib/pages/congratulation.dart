@@ -6,6 +6,8 @@ import 'package:lottie/lottie.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class CongratulatoryPage extends StatefulWidget {
+  String result;
+  CongratulatoryPage({required this.result});
   @override
   _CongratulatoryPageState createState() => _CongratulatoryPageState();
 }
@@ -40,7 +42,7 @@ class _CongratulatoryPageState extends State<CongratulatoryPage> with SingleTick
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final double score = 95.5; // Replace with the actual score
+    final String score = widget.result.split(":")[1]; // Replace with the actual score
 
     return Scaffold(
       appBar: AppBar(
@@ -98,7 +100,7 @@ class _CongratulatoryPageState extends State<CongratulatoryPage> with SingleTick
                               ),
                               SizedBox(height: 16.0),
                               Text(
-                                score.toString(),
+                                score,
                                 style: TextStyle(
                                   fontSize: 48.0,
                                   fontWeight: FontWeight.bold,
